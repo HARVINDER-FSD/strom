@@ -38,8 +38,6 @@ const Hero = () => {
         ease: 'power3.out',
       });
     }, heroRef);
-    
-    return () => ctx.revert();
 
     // Animate counters
     const duration = 2000; // 2 seconds
@@ -66,7 +64,10 @@ const Hero = () => {
       }
     }, interval);
 
-    return () => clearInterval(timer);
+    return () => {
+      ctx.revert();
+      clearInterval(timer);
+    };
   }, []);
 
   const scrollToContact = () => {
