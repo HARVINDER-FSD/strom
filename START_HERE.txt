@@ -1,0 +1,81 @@
+╔══════════════════════════════════════════════════════════════╗
+║                                                              ║
+║   STORM CONTACT FORM - EMAIL & EXCEL INTEGRATION             ║
+║                                                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+✅ SETUP COMPLETE! Your contact form now has:
+   • Email notifications to storm.organisers@gmail.com
+   • Excel download of all submissions
+   • Professional Resend email service
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🚀 QUICK START (3 Steps):
+
+1. GET RESEND API KEY (2 minutes)
+   → Visit: https://resend.com/signup
+   → Sign up (free, no credit card)
+   → Go to API Keys → Create new key
+   → Copy the key
+
+2. ADD TO .ENV FILE
+   → Open: project/.env
+   → Replace: RESEND_API_KEY=your_resend_api_key_here
+   → With your actual key
+
+3. START THE APPLICATION
+
+   OPTION A - Easy (Windows):
+   → Double-click: project/start.bat
+
+   OPTION B - Manual (2 terminals):
+   
+   Terminal 1:
+   cd project
+   npm run server
+   
+   Terminal 2:
+   cd project
+   npm run dev
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🎯 TEST IT:
+   1. Open: http://localhost:5173
+   2. Scroll to contact form
+   3. Fill and submit
+   4. Check: storm.organisers@gmail.com
+   5. Click "Excel" button to download submissions
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+📚 DOCUMENTATION:
+   • SETUP_COMPLETE.md - Full setup guide
+   • README_CONTACT_FORM.md - Quick reference
+   • RESEND_SETUP.md - Detailed Resend guide
+   • CONTACT_FORM_GUIDE.md - Feature documentation
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🆓 FREE TIER:
+   • 100 emails/day
+   • 3,000 emails/month
+   • No credit card required
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🐛 TROUBLESHOOTING:
+
+   Email not sending?
+   → Check API key in .env
+   → Restart server
+   → Check terminal for errors
+
+   Port already in use?
+   → Change PORT in .env to 3002
+   → Update VITE_API_URL to http://localhost:3002
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+That's it! Just add your Resend API key and you're ready! 🎉
