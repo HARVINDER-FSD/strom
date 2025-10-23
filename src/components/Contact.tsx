@@ -1,9 +1,18 @@
 import { Mail, Phone, Send, MapPin, Linkedin, Clock, MessageCircle } from 'lucide-react';
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 
 
 
 const Contact = () => {
+  const sectionRef = useRef(null);
+  const titleRef = useRef(null);
+  const leftColRef = useRef(null);
+  const rightColRef = useRef(null);
+
   const [formData, setFormData] = useState({
     name: '',
     mobile: '',
@@ -57,7 +66,44 @@ const Contact = () => {
     }
   };
 
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap.from(titleRef.current, {
+        y: 50,
+        opacity: 0,
+        duration: 1,
+        scrollTrigger: {
+          trigger: titleRef.current,
+          start: 'top 80%',
+          toggleActions: 'play none none reverse',
+        },
+      });
 
+      gsap.from(leftColRef.current, {
+        x: -60,
+        opacity: 0,
+        duration: 1,
+        scrollTrigger: {
+          trigger: leftColRef.current,
+          start: 'top 75%',
+          toggleActions: 'play none none reverse',
+        },
+      });
+
+      gsap.from(rightColRef.current, {
+        x: 60,
+        opacity: 0,
+        duration: 1,
+        scrollTrigger: {
+          trigger: rightColRef.current,
+          start: 'top 75%',
+          toggleActions: 'play none none reverse',
+        },
+      });
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
@@ -101,9 +147,9 @@ const Contact = () => {
   ];
 
   return (
-    <section id="contact" className="py-24 bg-white">
+    <section ref={sectionRef} id="contact" className="py-24 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
+        <div ref={titleRef} className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-slate-800 mb-4">
             Let's Build Your Growth Story Together
           </h2>
@@ -133,7 +179,7 @@ const Contact = () => {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          <div className="space-y-4">
+          <div ref={leftColRef} className="space-y-4">
             <div className="bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl p-5 text-white">
               <h3 className="text-xl font-bold mb-4">Get In Touch</h3>
               <div className="space-y-3">
@@ -305,7 +351,7 @@ const Contact = () => {
 
           </div>
 
-          <div className="bg-white border-2 border-slate-100 rounded-2xl p-6 shadow-xl">
+          <div ref={rightColRef} className="bg-white border-2 border-slate-100 rounded-2xl p-6 shadow-xl">
             <div className="mb-5">
               <h3 className="text-2xl font-bold text-slate-800">
                 Send Us a Message

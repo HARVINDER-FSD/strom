@@ -1,8 +1,66 @@
 import { Lightbulb, Users, Settings, UserPlus, TrendingUp } from 'lucide-react';
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const Services = () => {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const sectionRef = useRef(null);
+  const titleRef = useRef(null);
+  const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
+  const ctaRef = useRef(null);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      // Animate title
+      gsap.from(titleRef.current, {
+        y: 50,
+        opacity: 0,
+        duration: 1,
+        scrollTrigger: {
+          trigger: titleRef.current,
+          start: 'top 80%',
+          end: 'bottom 60%',
+          toggleActions: 'play none none reverse',
+        },
+      });
+
+      // Animate service cards
+      cardsRef.current.forEach((card, index) => {
+        if (card) {
+          gsap.from(card, {
+            y: 80,
+            opacity: 0,
+            duration: 0.8,
+            delay: index * 0.1,
+            scrollTrigger: {
+              trigger: card,
+              start: 'top 85%',
+              end: 'bottom 60%',
+              toggleActions: 'play none none reverse',
+            },
+          });
+        }
+      });
+
+      // Animate CTA section
+      gsap.from(ctaRef.current, {
+        y: 60,
+        opacity: 0,
+        duration: 1,
+        scrollTrigger: {
+          trigger: ctaRef.current,
+          start: 'top 80%',
+          end: 'bottom 60%',
+          toggleActions: 'play none none reverse',
+        },
+      });
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
 
   const services = [
     {
@@ -83,9 +141,9 @@ const Services = () => {
   ];
 
   return (
-    <section id="services" className="py-24 bg-white">
+    <section ref={sectionRef} id="services" className="py-24 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16" data-aos="fade-down">
+        <div ref={titleRef} className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-slate-800 mb-4">
             Our Core Expertise
           </h2>
@@ -100,6 +158,7 @@ const Services = () => {
             return (
               <div
                 key={index}
+                ref={(el) => (cardsRef.current[index] = el)}
                 onMouseEnter={() => setHoveredIndex(index)}
                 onMouseLeave={() => setHoveredIndex(null)}
                 className={`group relative bg-white border-2 ${service.borderColor} rounded-2xl p-8 transition-all duration-500 transform hover:-translate-y-2 hover:shadow-2xl cursor-pointer ${hoveredIndex === index ? 'scale-105' : ''
@@ -154,7 +213,7 @@ const Services = () => {
           })}
         </div>
 
-        <div className="mt-16 bg-gradient-to-br from-slate-800 to-slate-900 rounded-3xl p-12 text-center relative overflow-hidden">
+        <div ref={ctaRef} className="mt-16 bg-gradient-to-br from-slate-800 to-slate-900 rounded-3xl p-12 text-center relative overflow-hidden">
           <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0zNiAxOGMzLjMxNCAwIDYgMi42ODYgNiA2cy0yLjY4NiA2LTYgNi02LTIuNjg2LTYtNiAyLjY4Ni02IDYtNiIgc3Ryb2tlPSJyZ2JhKDI1NSwgMjU1LCAyNTUsIDAuMSkiLz48L2c+PC9zdmc+')] opacity-20"></div>
           <div className="relative z-10">
             <h3 className="text-3xl md:text-4xl font-bold text-white mb-4">

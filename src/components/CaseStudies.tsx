@@ -1,12 +1,65 @@
 import { Building2, ArrowRight } from 'lucide-react';
+import { useEffect, useRef } from 'react';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const CaseStudies = () => {
+  const sectionRef = useRef(null);
+  const titleRef = useRef(null);
+  const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
+  const ctaRef = useRef(null);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap.from(titleRef.current, {
+        y: 50,
+        opacity: 0,
+        duration: 1,
+        scrollTrigger: {
+          trigger: titleRef.current,
+          start: 'top 80%',
+          toggleActions: 'play none none reverse',
+        },
+      });
+
+      cardsRef.current.forEach((card, index) => {
+        if (card) {
+          gsap.from(card, {
+            y: 80,
+            opacity: 0,
+            duration: 0.8,
+            delay: index * 0.15,
+            scrollTrigger: {
+              trigger: card,
+              start: 'top 85%',
+              toggleActions: 'play none none reverse',
+            },
+          });
+        }
+      });
+
+      gsap.from(ctaRef.current, {
+        scale: 0.9,
+        opacity: 0,
+        duration: 1,
+        scrollTrigger: {
+          trigger: ctaRef.current,
+          start: 'top 80%',
+          toggleActions: 'play none none reverse',
+        },
+      });
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
   const caseStudies = [
     {
       id: 1,
       name: 'Discovering Me',
       icon: Building2,
-      logo: null,
+      logo: "/Untitled-1.png",
       category: 'Events',
       description:
         'Transforming personal growth initiatives with structured training programs and strategic guidance.',
@@ -56,9 +109,9 @@ const CaseStudies = () => {
   ];
 
   return (
-    <section id="case-studies" className="py-24 bg-white">
+    <section ref={sectionRef} id="case-studies" className="py-24 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
+        <div ref={titleRef} className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-slate-800 mb-4">
             Success Stories
           </h2>
@@ -72,6 +125,7 @@ const CaseStudies = () => {
             return (
               <div
                 key={study.id}
+                ref={(el) => (cardsRef.current[index] = el)}
                 className="group bg-white border-2 border-slate-100 rounded-2xl p-8 hover:border-transparent hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 cursor-pointer relative overflow-hidden"
                 style={{
                   animationDelay: `${index * 100}ms`,
@@ -122,7 +176,7 @@ const CaseStudies = () => {
           })}
         </div>
 
-        <div className="mt-16 bg-gradient-to-br from-blue-600 to-cyan-600 rounded-3xl p-12 text-center text-white relative overflow-hidden">
+        <div ref={ctaRef} className="mt-16 bg-gradient-to-br from-blue-600 to-cyan-600 rounded-3xl p-12 text-center text-white relative overflow-hidden">
           <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0zNiAxOGMzLjMxNCAwIDYgMi42ODYgNiA2cy0yLjY4NiA2LTYgNi02LTIuNjg2LTYtNiAyLjY4Ni02IDYtNiIgc3Ryb2tlPSJyZ2JhKDI1NSwgMjU1LCAyNTUsIDAuMikiLz48L2c+PC9zdmc+')] opacity-20"></div>
           <div className="relative z-10">
             <h3 className="text-3xl md:text-4xl font-bold mb-4">

@@ -1,6 +1,64 @@
 import { Play, Quote } from 'lucide-react';
+import { useEffect, useRef } from 'react';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const Testimonials = () => {
+  const sectionRef = useRef(null);
+  const titleRef = useRef(null);
+  const videosRef = useRef<(HTMLAnchorElement | null)[]>([]);
+  const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap.from(titleRef.current, {
+        y: 50,
+        opacity: 0,
+        duration: 1,
+        scrollTrigger: {
+          trigger: titleRef.current,
+          start: 'top 80%',
+          toggleActions: 'play none none reverse',
+        },
+      });
+
+      videosRef.current.forEach((video, index) => {
+        if (video) {
+          gsap.from(video, {
+            scale: 0.8,
+            opacity: 0,
+            duration: 0.6,
+            delay: index * 0.2,
+            scrollTrigger: {
+              trigger: video,
+              start: 'top 85%',
+              toggleActions: 'play none none reverse',
+            },
+          });
+        }
+      });
+
+      cardsRef.current.forEach((card, index) => {
+        if (card) {
+          gsap.from(card, {
+            y: 60,
+            opacity: 0,
+            duration: 0.8,
+            delay: index * 0.15,
+            scrollTrigger: {
+              trigger: card,
+              start: 'top 85%',
+              toggleActions: 'play none none reverse',
+            },
+          });
+        }
+      });
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
   const videoTestimonials = [
     {
       id: 1,
@@ -27,34 +85,17 @@ const Testimonials = () => {
     },
   ];
 
-  const testimonials = [
-    // {
-    //   quote:
-    //     'STORM helped us transform our operations completely. Their strategic approach and hands-on support made all the difference.',
-    //   author: 'Education Leader',
-    //   role: 'School Administrator',
-    //   company: 'Leading Educational Institution',
-    // },
-    // {
-    //   quote:
-    //     'The training programs designed by STORM elevated our team\'s performance significantly. We saw immediate improvements in productivity.',
-    //   author: 'Business Owner',
-    //   role: 'Founder & CEO',
-    //   company: 'Growing Enterprise',
-    // },
-    // {
-    //   quote:
-    //     'Their recruitment and onboarding process helped us find the perfect team members. STORM truly understands talent acquisition.',
-    //   author: 'Operations Manager',
-    //   role: 'VP Operations',
-    //   company: 'Service Industry',
-    // },
-  ];
+  const testimonials: Array<{
+    quote: string;
+    author: string;
+    role: string;
+    company: string;
+  }> = [];
 
   return (
-    <section id="testimonials" className="py-24 bg-slate-50">
+    <section ref={sectionRef} id="testimonials" className="py-24 bg-slate-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
+        <div ref={titleRef} className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-slate-800 mb-4">
             What Our Clients Say
           </h2>
@@ -65,10 +106,10 @@ const Testimonials = () => {
 
         <div className="mb-16">
           <h3 className="text-2xl font-bold text-slate-800 mb-8 text-center">
-            Video Testimonials
+           It has discovering me case studies
           </h3>
           <div className="flex justify-center mb-6">
-            <a
+            {/* <a
               href="https://www.youtube.com/@stormorganisers7949"
               target="_blank"
               rel="noopener noreferrer"
@@ -76,17 +117,18 @@ const Testimonials = () => {
             >
               <Play className="w-5 h-5" />
               Watch All Testimonials on YouTube
-            </a>
+            </a> */}
           </div>
-          <p className="text-center text-slate-600 text-sm">
+          {/* <p className="text-center text-slate-600 text-sm">
             Visit our YouTube channel to see real client experiences and success stories
-          </p>
+          </p> */}
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-          {videoTestimonials.map((video) => (
+          {videoTestimonials.map((video, index) => (
             <a
               key={video.id}
+              ref={(el) => (videosRef.current[index] = el)}
               href={video.url}
               target="_blank"
               rel="noopener noreferrer"
@@ -106,7 +148,6 @@ const Testimonials = () => {
                     <Play className="w-8 h-8 ml-1" />
                   </div>
                   <h4 className="font-bold text-lg mb-1">{video.title}</h4>
-                  <p className="text-sm text-white/80">{video.company}</p>
                 </div>
               </div>
             </a>
@@ -117,6 +158,7 @@ const Testimonials = () => {
           {testimonials.map((testimonial, index) => (
             <div
               key={index}
+              ref={(el) => (cardsRef.current[index] = el)}
               className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 relative"
             >
               <div className="absolute top-6 right-6 text-blue-200">

@@ -1,10 +1,71 @@
 import { Target, Rocket, Award } from 'lucide-react';
+import { useEffect, useRef } from 'react';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const About = () => {
+  const sectionRef = useRef(null);
+  const titleRef = useRef(null);
+  const contentLeftRef = useRef(null);
+  const contentRightRef = useRef(null);
+  const storyRef = useRef(null);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap.from(titleRef.current, {
+        y: 50,
+        opacity: 0,
+        duration: 1,
+        scrollTrigger: {
+          trigger: titleRef.current,
+          start: 'top 80%',
+          toggleActions: 'play none none reverse',
+        },
+      });
+
+      gsap.from(contentLeftRef.current, {
+        x: -80,
+        opacity: 0,
+        duration: 1,
+        scrollTrigger: {
+          trigger: contentLeftRef.current,
+          start: 'top 75%',
+          toggleActions: 'play none none reverse',
+        },
+      });
+
+      gsap.from(contentRightRef.current, {
+        x: 80,
+        opacity: 0,
+        duration: 1,
+        scrollTrigger: {
+          trigger: contentRightRef.current,
+          start: 'top 75%',
+          toggleActions: 'play none none reverse',
+        },
+      });
+
+      gsap.from(storyRef.current, {
+        y: 60,
+        opacity: 0,
+        duration: 1,
+        scrollTrigger: {
+          trigger: storyRef.current,
+          start: 'top 80%',
+          toggleActions: 'play none none reverse',
+        },
+      });
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <section id="about" className="py-24 bg-slate-50">
+    <section ref={sectionRef} id="about" className="py-24 bg-slate-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
+        <div ref={titleRef} className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-slate-800 mb-4">
             About STORM
           </h2>
@@ -14,7 +75,7 @@ const About = () => {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-20">
-          <div className="space-y-6">
+          <div ref={contentLeftRef} className="space-y-6">
             <h3 className="text-3xl font-bold text-slate-800">
               Transforming Ideas Into Impactful Action
             </h3>
@@ -48,7 +109,7 @@ const About = () => {
             </div>
           </div>
 
-          <div className="relative">
+          <div ref={contentRightRef} className="relative">
             <div className="absolute inset-0 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-3xl transform rotate-3"></div>
             <div className="relative bg-white rounded-3xl p-8 shadow-2xl transform -rotate-1 hover:rotate-0 transition-transform duration-500">
               <div className="space-y-6">
@@ -104,7 +165,7 @@ const About = () => {
           </div>
         </div>
 
-        <div className="bg-white rounded-3xl p-12 shadow-xl">
+        <div ref={storyRef} className="bg-white rounded-3xl p-12 shadow-xl">
           <h3 className="text-3xl font-bold text-slate-800 mb-8 text-center">
             Our Story
           </h3>
