@@ -14,43 +14,47 @@ const Testimonials = () => {
   useEffect(() => {
     const ctx = gsap.context(() => {
       gsap.from(titleRef.current, {
-        y: 50,
+        y: 40,
         opacity: 0,
-        duration: 1,
+        duration: 0.5,
+        ease: 'power2.out',
         scrollTrigger: {
           trigger: titleRef.current,
-          start: 'top 80%',
-          toggleActions: 'play none none reverse',
+          start: 'top 85%',
+          end: 'top 65%',
+          scrub: 0.3,
         },
       });
 
-      videosRef.current.forEach((video, index) => {
+      videosRef.current.forEach((video) => {
         if (video) {
           gsap.from(video, {
-            scale: 0.8,
+            scale: 0.92,
             opacity: 0,
-            duration: 0.6,
-            delay: index * 0.2,
+            duration: 0.4,
+            ease: 'power2.out',
             scrollTrigger: {
               trigger: video,
-              start: 'top 85%',
-              toggleActions: 'play none none reverse',
+              start: 'top 90%',
+              end: 'top 70%',
+              scrub: 0.3,
             },
           });
         }
       });
 
-      cardsRef.current.forEach((card, index) => {
+      cardsRef.current.forEach((card) => {
         if (card) {
           gsap.from(card, {
-            y: 60,
+            y: 50,
             opacity: 0,
-            duration: 0.8,
-            delay: index * 0.15,
+            duration: 0.4,
+            ease: 'power2.out',
             scrollTrigger: {
               trigger: card,
-              start: 'top 85%',
-              toggleActions: 'play none none reverse',
+              start: 'top 90%',
+              end: 'top 70%',
+              scrub: 0.3,
             },
           });
         }
@@ -73,7 +77,7 @@ const Testimonials = () => {
       url: 'https://youtu.be/vkPfZFaT-RY?si=pDkIZcKw5sF4kTrY',
       thumbnail: 'https://img.youtube.com/vi/vkPfZFaT-RY/maxresdefault.jpg',
       title: 'Transformation Journey',
-    
+
     },
     {
       id: 3,
@@ -81,7 +85,7 @@ const Testimonials = () => {
       url: 'https://youtu.be/p-xLo7A6y1k?si=pox6Trk8DMnFfj_J',
       thumbnail: 'https://img.youtube.com/vi/p-xLo7A6y1k/maxresdefault.jpg',
       title: 'Business Growth',
-      
+
     },
   ];
 
@@ -106,7 +110,7 @@ const Testimonials = () => {
 
         <div className="mb-16">
           <h3 className="text-2xl font-bold text-slate-800 mb-8 text-center">
-           It has discovering me case studies
+            It has discovering me case studies
           </h3>
           <div className="flex justify-center mb-6">
             {/* <a

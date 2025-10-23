@@ -90,19 +90,19 @@ const Hero = () => {
         <div className="absolute -bottom-8 left-20 w-72 h-72 bg-teal-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-4000"></div>
       </div>
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32 text-center">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-24 md:py-32 text-center">
         <div
           className={`transition-all duration-1000 transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
             }`}
         >
-          <div className="inline-flex items-center gap-2 bg-blue-500/20 backdrop-blur-sm border border-blue-400/30 rounded-full px-4 py-2 mb-8">
-            <Sparkles className="w-4 h-4 text-blue-300" />
-            <span className="text-blue-100 text-sm font-medium">
+          <div className="inline-flex items-center gap-2 bg-blue-500/20 backdrop-blur-sm border border-blue-400/30 rounded-full px-3 sm:px-4 py-1.5 sm:py-2 mb-6 sm:mb-8">
+            <Sparkles className="w-3 h-3 sm:w-4 sm:h-4 text-blue-300" />
+            <span className="text-blue-100 text-xs sm:text-sm font-medium">
               Organising the Un-Organised
             </span>
           </div>
 
-          <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-6 leading-tight px-4">
             Empowering Businesses
             <br />
             <span className="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
@@ -110,31 +110,31 @@ const Hero = () => {
             </span>
           </h1>
 
-          <p className="text-xl md:text-2xl text-slate-300 mb-12 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-slate-300 mb-8 md:mb-12 max-w-3xl mx-auto leading-relaxed px-4">
             We help you build strong foundations, optimize operations, develop
             talent, and drive sustainable success.
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center px-4">
             <button
               onClick={scrollToContact}
-              className="group bg-blue-600 text-white px-8 py-4 rounded-full hover:bg-blue-700 transition-all duration-300 transform hover:scale-105 shadow-2xl hover:shadow-blue-500/50 flex items-center gap-2 font-semibold"
+              className="group bg-blue-600 text-white px-6 sm:px-8 py-3 sm:py-4 text-sm sm:text-base rounded-full hover:bg-blue-700 transition-all duration-300 transform hover:scale-105 shadow-2xl hover:shadow-blue-500/50 flex items-center gap-2 font-semibold w-full sm:w-auto justify-center"
             >
               Schedule a Free Consultation
-              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
+              <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform duration-300" />
             </button>
             <button
               onClick={() => {
                 const element = document.querySelector('#services');
                 if (element) element.scrollIntoView({ behavior: 'smooth' });
               }}
-              className="bg-white/10 backdrop-blur-sm text-white border-2 border-white/30 px-8 py-4 rounded-full hover:bg-white/20 transition-all duration-300 transform hover:scale-105 font-semibold"
+              className="bg-white/10 backdrop-blur-sm text-white border-2 border-white/30 px-6 sm:px-8 py-3 sm:py-4 text-sm sm:text-base rounded-full hover:bg-white/20 transition-all duration-300 transform hover:scale-105 font-semibold w-full sm:w-auto"
             >
               Explore Services
             </button>
           </div>
 
-          <div className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto">
+          <div className="mt-12 sm:mt-16 md:mt-20 grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 md:gap-8 max-w-4xl mx-auto px-4">
             {[
               { value: counts.projects, suffix: '+', label: 'Projects Delivered' },
               { value: counts.clients, suffix: '+', label: 'Happy Clients' },
@@ -149,11 +149,11 @@ const Hero = () => {
                     : 'translate-y-10 opacity-0'
                   }`}
               >
-                <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition-all duration-300 transform hover:scale-105">
-                  <div className="text-3xl md:text-4xl font-bold text-white mb-2">
+                <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl sm:rounded-2xl p-4 sm:p-6 hover:bg-white/10 transition-all duration-300 transform hover:scale-105">
+                  <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-1 sm:mb-2">
                     {stat.value}{stat.suffix}
                   </div>
-                  <div className="text-sm text-slate-300">{stat.label}</div>
+                  <div className="text-xs sm:text-sm text-slate-300">{stat.label}</div>
                 </div>
               </div>
             ))}

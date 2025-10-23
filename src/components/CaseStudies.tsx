@@ -14,40 +14,45 @@ const CaseStudies = () => {
   useEffect(() => {
     const ctx = gsap.context(() => {
       gsap.from(titleRef.current, {
-        y: 50,
+        y: 40,
         opacity: 0,
-        duration: 1,
+        duration: 0.5,
+        ease: 'power2.out',
         scrollTrigger: {
           trigger: titleRef.current,
-          start: 'top 80%',
-          toggleActions: 'play none none reverse',
+          start: 'top 85%',
+          end: 'top 65%',
+          scrub: 0.3,
         },
       });
 
-      cardsRef.current.forEach((card, index) => {
+      cardsRef.current.forEach((card) => {
         if (card) {
           gsap.from(card, {
-            y: 80,
+            y: 50,
             opacity: 0,
-            duration: 0.8,
-            delay: index * 0.15,
+            duration: 0.4,
+            ease: 'power2.out',
             scrollTrigger: {
               trigger: card,
-              start: 'top 85%',
-              toggleActions: 'play none none reverse',
+              start: 'top 90%',
+              end: 'top 70%',
+              scrub: 0.3,
             },
           });
         }
       });
 
       gsap.from(ctaRef.current, {
-        scale: 0.9,
+        scale: 0.96,
         opacity: 0,
-        duration: 1,
+        duration: 0.5,
+        ease: 'power2.out',
         scrollTrigger: {
           trigger: ctaRef.current,
-          start: 'top 80%',
-          toggleActions: 'play none none reverse',
+          start: 'top 85%',
+          end: 'top 70%',
+          scrub: 0.3,
         },
       });
     }, sectionRef);
@@ -135,22 +140,24 @@ const CaseStudies = () => {
                   className={`absolute inset-0 bg-gradient-to-br ${study.color} opacity-0 group-hover:opacity-100 transition-opacity duration-500`}
                 ></div>
 
-                <div className="relative z-10">
+                <div className="relative z-10 flex flex-col items-center">
                   <div
-                    className={`w-16 h-16 ${study.logo ? 'bg-white' : `bg-gradient-to-br ${study.color}`} rounded-xl flex items-center justify-center mb-6 transform group-hover:scale-110 transition-all duration-500 shadow-lg overflow-hidden`}
+                    className={`w-16 h-16 ${study.logo ? 'bg-white' : `bg-gradient-to-br ${study.color}`} rounded-xl mb-6 transform group-hover:scale-110 transition-all duration-500 shadow-lg relative`}
                   >
                     {study.logo ? (
                       <img
                         src={study.logo}
                         alt={study.name}
-                        className="w-full h-full object-cover"
+                        className="absolute inset-0 m-auto max-w-[75%] max-h-[75%] object-contain"
                       />
                     ) : study.icon ? (
-                      <study.icon className="w-8 h-8 text-white" />
+                      <div className="absolute inset-0 flex items-center justify-center">
+                        <study.icon className="w-8 h-8 text-white" />
+                      </div>
                     ) : null}
                   </div>
 
-                  <div className="mb-3">
+                  <div className="mb-3 text-center">
                     <span
                       className={`inline-block text-xs font-semibold px-3 py-1 rounded-full ${study.bgColor} bg-gradient-to-r ${study.color} bg-clip-text text-transparent group-hover:text-white transition-colors duration-500`}
                     >
@@ -158,11 +165,11 @@ const CaseStudies = () => {
                     </span>
                   </div>
 
-                  <h3 className="text-2xl font-bold text-slate-800 mb-4 group-hover:text-white transition-colors duration-500">
+                  <h3 className="text-2xl font-bold text-slate-800 mb-4 group-hover:text-white transition-colors duration-500 text-center">
                     {study.name}
                   </h3>
 
-                  <p className="text-slate-600 mb-6 leading-relaxed group-hover:text-white/90 transition-colors duration-500">
+                  <p className="text-slate-600 mb-6 leading-relaxed group-hover:text-white/90 transition-colors duration-500 text-center">
                     {study.description}
                   </p>
 

@@ -16,30 +16,31 @@ const Services = () => {
     const ctx = gsap.context(() => {
       // Animate title
       gsap.from(titleRef.current, {
-        y: 50,
+        y: 40,
         opacity: 0,
-        duration: 1,
+        duration: 0.5,
+        ease: 'power2.out',
         scrollTrigger: {
           trigger: titleRef.current,
-          start: 'top 80%',
-          end: 'bottom 60%',
-          toggleActions: 'play none none reverse',
+          start: 'top 85%',
+          end: 'top 65%',
+          scrub: 0.3,
         },
       });
 
       // Animate service cards
-      cardsRef.current.forEach((card, index) => {
+      cardsRef.current.forEach((card) => {
         if (card) {
           gsap.from(card, {
-            y: 80,
+            y: 50,
             opacity: 0,
-            duration: 0.8,
-            delay: index * 0.1,
+            duration: 0.4,
+            ease: 'power2.out',
             scrollTrigger: {
               trigger: card,
-              start: 'top 85%',
-              end: 'bottom 60%',
-              toggleActions: 'play none none reverse',
+              start: 'top 90%',
+              end: 'top 70%',
+              scrub: 0.3,
             },
           });
         }
@@ -47,14 +48,15 @@ const Services = () => {
 
       // Animate CTA section
       gsap.from(ctaRef.current, {
-        y: 60,
+        y: 50,
         opacity: 0,
-        duration: 1,
+        duration: 0.5,
+        ease: 'power2.out',
         scrollTrigger: {
           trigger: ctaRef.current,
-          start: 'top 80%',
-          end: 'bottom 60%',
-          toggleActions: 'play none none reverse',
+          start: 'top 85%',
+          end: 'top 70%',
+          scrub: 0.3,
         },
       });
     }, sectionRef);

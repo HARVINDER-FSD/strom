@@ -15,46 +15,54 @@ const About = () => {
   useEffect(() => {
     const ctx = gsap.context(() => {
       gsap.from(titleRef.current, {
-        y: 50,
+        y: 40,
         opacity: 0,
-        duration: 1,
+        duration: 0.5,
+        ease: 'power2.out',
         scrollTrigger: {
           trigger: titleRef.current,
-          start: 'top 80%',
-          toggleActions: 'play none none reverse',
+          start: 'top 85%',
+          end: 'top 65%',
+          scrub: 0.3,
         },
       });
 
       gsap.from(contentLeftRef.current, {
-        x: -80,
+        x: -50,
         opacity: 0,
-        duration: 1,
+        duration: 0.5,
+        ease: 'power2.out',
         scrollTrigger: {
           trigger: contentLeftRef.current,
-          start: 'top 75%',
-          toggleActions: 'play none none reverse',
+          start: 'top 85%',
+          end: 'top 65%',
+          scrub: 0.3,
         },
       });
 
       gsap.from(contentRightRef.current, {
-        x: 80,
+        x: 50,
         opacity: 0,
-        duration: 1,
+        duration: 0.5,
+        ease: 'power2.out',
         scrollTrigger: {
           trigger: contentRightRef.current,
-          start: 'top 75%',
-          toggleActions: 'play none none reverse',
+          start: 'top 85%',
+          end: 'top 65%',
+          scrub: 0.3,
         },
       });
 
       gsap.from(storyRef.current, {
-        y: 60,
+        y: 50,
         opacity: 0,
-        duration: 1,
+        duration: 0.5,
+        ease: 'power2.out',
         scrollTrigger: {
           trigger: storyRef.current,
-          start: 'top 80%',
-          toggleActions: 'play none none reverse',
+          start: 'top 85%',
+          end: 'top 70%',
+          scrub: 0.3,
         },
       });
     }, sectionRef);
