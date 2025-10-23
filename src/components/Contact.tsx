@@ -71,14 +71,14 @@ const Contact = () => {
   const socialLinks = [
     {
       icon: Linkedin,
-      url: '#',
+      url: 'https://www.linkedin.com/in/shaishav-kayastha-952ba818?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app',
       label: 'LinkedIn',
       color: 'hover:text-blue-600',
       svg: null
     },
     {
       icon: null,
-      url: '#',
+      url: 'https://www.instagram.com/shaishav.kayastha?igsh=NXE2aHN4ZngybDRh',
       label: 'Instagram',
       color: 'hover:text-pink-600',
       svg: (
