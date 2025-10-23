@@ -1,4 +1,4 @@
-import { Mail, Phone, Linkedin, Twitter, Facebook, Instagram, Youtube } from 'lucide-react';
+import { Mail, Phone, Linkedin, Instagram, Youtube } from 'lucide-react';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -15,10 +15,8 @@ const Footer = () => {
   };
 
   const socialLinks = [
-    { icon: Linkedin, url: '#', label: 'LinkedIn' },
-    // { icon: Twitter, url: '#', label: 'Twitter' },
-    // { icon: Facebook, url: '#', label: 'Facebook' },
-    { icon: Instagram, url: '#', label: 'Instagram' },
+    { icon: Linkedin, url: 'https://www.linkedin.com/in/shaishav-kayastha-952ba818?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app', label: 'LinkedIn' },
+    { icon: Instagram, url: 'https://www.instagram.com/shaishav.kayastha?igsh=NXE2aHN4ZngybDRh', label: 'Instagram' },
     { icon: Youtube, url: 'https://www.youtube.com/@stormorganisers7949/videos', label: 'YouTube' },
   ];
 
