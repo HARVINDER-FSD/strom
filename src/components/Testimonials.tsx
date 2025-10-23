@@ -97,13 +97,13 @@ const Testimonials = () => {
   }> = [];
 
   return (
-    <section ref={sectionRef} id="testimonials" className="py-24 bg-slate-50">
+    <section ref={sectionRef} id="testimonials" className="py-16 md:py-20 lg:py-24 bg-slate-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div ref={titleRef} className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-slate-800 mb-4">
+        <div ref={titleRef} className="text-center mb-12 md:mb-16">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-slate-800 mb-3 md:mb-4">
             What Our Clients Say
           </h2>
-          <p className="text-xl text-slate-600 max-w-2xl mx-auto">
+          <p className="text-base md:text-lg lg:text-xl text-slate-600 max-w-2xl mx-auto px-4">
             Hear from businesses we've helped transform
           </p>
         </div>

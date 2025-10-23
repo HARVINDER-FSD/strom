@@ -71,23 +71,23 @@ const About = () => {
   }, []);
 
   return (
-    <section ref={sectionRef} id="about" className="py-24 bg-slate-50">
+    <section ref={sectionRef} id="about" className="py-16 md:py-20 lg:py-24 bg-slate-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div ref={titleRef} className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-slate-800 mb-4">
+        <div ref={titleRef} className="text-center mb-12 md:mb-16">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-slate-800 mb-3 md:mb-4">
             About STORM
           </h2>
-          <p className="text-xl text-slate-600 max-w-3xl mx-auto">
+          <p className="text-base md:text-lg lg:text-xl text-slate-600 max-w-3xl mx-auto px-4">
             We partner with organizations to transform vision into action
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-20">
-          <div ref={contentLeftRef} className="space-y-6">
-            <h3 className="text-3xl font-bold text-slate-800">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-center mb-12 md:mb-16 lg:mb-20">
+          <div ref={contentLeftRef} className="space-y-4 md:space-y-6">
+            <h3 className="text-2xl md:text-3xl font-bold text-slate-800">
               Transforming Ideas Into Impactful Action
             </h3>
-            <p className="text-lg text-slate-600 leading-relaxed">
+            <p className="text-base md:text-lg text-slate-600 leading-relaxed">
               At STORM, we partner with organizations to transform vision into
               action. With expertise in strategy design, process creation,
               training, recruitment, operations, and marketing guidance, we help

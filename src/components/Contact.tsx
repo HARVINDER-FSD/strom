@@ -153,21 +153,21 @@ const Contact = () => {
   ];
 
   return (
-    <section ref={sectionRef} id="contact" className="py-24 bg-white">
+    <section ref={sectionRef} id="contact" className="py-16 md:py-20 lg:py-24 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div ref={titleRef} className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-slate-800 mb-4">
+        <div ref={titleRef} className="text-center mb-12 md:mb-16">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-slate-800 mb-3 md:mb-4 px-4">
             Let's Build Your Growth Story Together
           </h2>
-          <p className="text-xl text-slate-600 max-w-2xl mx-auto mb-8">
+          <p className="text-base md:text-lg lg:text-xl text-slate-600 max-w-2xl mx-auto mb-6 md:mb-8 px-4">
             Schedule a free consultation and take the first step toward smarter
             business decisions
           </p>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto mt-12">
-            <div className="bg-gradient-to-br from-blue-50 to-cyan-50 rounded-2xl p-6 border-2 border-blue-100">
-              <div className="text-3xl font-bold text-blue-600 mb-2">100+</div>
-              <div className="text-sm text-slate-600">Projects Delivered</div>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 max-w-4xl mx-auto mt-8 md:mt-12">
+            <div className="bg-gradient-to-br from-blue-50 to-cyan-50 rounded-xl md:rounded-2xl p-4 md:p-6 border-2 border-blue-100">
+              <div className="text-2xl md:text-3xl font-bold text-blue-600 mb-1 md:mb-2">100+</div>
+              <div className="text-xs md:text-sm text-slate-600">Projects Delivered</div>
             </div>
             <div className="bg-gradient-to-br from-purple-50 to-pink-50 rounded-2xl p-6 border-2 border-purple-100">
               <div className="text-3xl font-bold text-purple-600 mb-2">50+</div>

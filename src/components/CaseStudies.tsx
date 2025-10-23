@@ -114,24 +114,24 @@ const CaseStudies = () => {
   ];
 
   return (
-    <section ref={sectionRef} id="case-studies" className="py-24 bg-white">
+    <section ref={sectionRef} id="case-studies" className="py-16 md:py-20 lg:py-24 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div ref={titleRef} className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-slate-800 mb-4">
+        <div ref={titleRef} className="text-center mb-12 md:mb-16">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-slate-800 mb-3 md:mb-4">
             Success Stories
           </h2>
-          <p className="text-xl text-slate-600 max-w-2xl mx-auto">
+          <p className="text-base md:text-lg lg:text-xl text-slate-600 max-w-2xl mx-auto px-4">
             Real results from real businesses we've helped transform
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
           {caseStudies.map((study, index) => {
             return (
               <div
                 key={study.id}
                 ref={(el) => (cardsRef.current[index] = el)}
-                className="group bg-white border-2 border-slate-100 rounded-2xl p-8 hover:border-transparent hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 cursor-pointer relative overflow-hidden"
+                className="group bg-white border-2 border-slate-100 rounded-xl md:rounded-2xl p-6 md:p-8 hover:border-transparent hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 cursor-pointer relative overflow-hidden"
                 style={{
                   animationDelay: `${index * 100}ms`,
                 }}
@@ -165,11 +165,11 @@ const CaseStudies = () => {
                     </span>
                   </div>
 
-                  <h3 className="text-2xl font-bold text-slate-800 mb-4 group-hover:text-white transition-colors duration-500 text-center">
+                  <h3 className="text-xl md:text-2xl font-bold text-slate-800 mb-3 md:mb-4 group-hover:text-white transition-colors duration-500 text-center">
                     {study.name}
                   </h3>
 
-                  <p className="text-slate-600 mb-6 leading-relaxed group-hover:text-white/90 transition-colors duration-500 text-center">
+                  <p className="text-sm md:text-base text-slate-600 mb-4 md:mb-6 leading-relaxed group-hover:text-white/90 transition-colors duration-500 text-center">
                     {study.description}
                   </p>
 
@@ -183,13 +183,13 @@ const CaseStudies = () => {
           })}
         </div>
 
-        <div ref={ctaRef} className="mt-16 bg-gradient-to-br from-blue-600 to-cyan-600 rounded-3xl p-12 text-center text-white relative overflow-hidden">
+        <div ref={ctaRef} className="mt-12 md:mt-16 bg-gradient-to-br from-blue-600 to-cyan-600 rounded-2xl md:rounded-3xl p-6 md:p-12 text-center text-white relative overflow-hidden">
           <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0zNiAxOGMzLjMxNCAwIDYgMi42ODYgNiA2cy0yLjY4NiA2LTYgNi02LTIuNjg2LTYtNiAyLjY4Ni02IDYtNiIgc3Ryb2tlPSJyZ2JhKDI1NSwgMjU1LCAyNTUsIDAuMikiLz48L2c+PC9zdmc+')] opacity-20"></div>
           <div className="relative z-10">
-            <h3 className="text-3xl md:text-4xl font-bold mb-4">
+            <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-3 md:mb-4">
               Ready to Write Your Success Story?
             </h3>
-            <p className="text-xl mb-8 text-white/90 max-w-2xl mx-auto">
+            <p className="text-base md:text-lg lg:text-xl mb-6 md:mb-8 text-white/90 max-w-2xl mx-auto px-4">
               Join the growing list of businesses that have transformed with STORM
             </p>
             <button
@@ -197,10 +197,10 @@ const CaseStudies = () => {
                 const element = document.querySelector('#contact');
                 if (element) element.scrollIntoView({ behavior: 'smooth' });
               }}
-              className="bg-white text-blue-600 px-8 py-4 rounded-full font-semibold hover:bg-slate-100 transition-all duration-300 transform hover:scale-105 shadow-xl inline-flex items-center gap-2"
+              className="bg-white text-blue-600 px-6 md:px-8 py-3 md:py-4 text-sm md:text-base rounded-full font-semibold hover:bg-slate-100 transition-all duration-300 transform hover:scale-105 shadow-xl inline-flex items-center gap-2"
             >
               Let's Build Your Next Level Together
-              <ArrowRight className="w-5 h-5" />
+              <ArrowRight className="w-4 h-4 md:w-5 md:h-5" />
             </button>
           </div>
         </div>
