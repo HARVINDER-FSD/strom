@@ -12,7 +12,7 @@ const Hero = () => {
 
   useEffect(() => {
     setIsVisible(true);
-    
+
     // GSAP animations
     const ctx = gsap.context(() => {
       gsap.from(titleRef.current, {
@@ -21,7 +21,7 @@ const Hero = () => {
         duration: 1,
         ease: 'power3.out',
       });
-      
+
       gsap.from(subtitleRef.current, {
         y: 30,
         opacity: 0,
@@ -29,7 +29,7 @@ const Hero = () => {
         delay: 0.3,
         ease: 'power3.out',
       });
-      
+
       gsap.from(buttonsRef.current, {
         y: 20,
         opacity: 0,

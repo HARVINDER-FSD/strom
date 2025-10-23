@@ -1,4 +1,4 @@
-import { Building2, Scissors, GraduationCap, ArrowRight } from 'lucide-react';
+import { Building2, ArrowRight } from 'lucide-react';
 
 const CaseStudies = () => {
   const caseStudies = [
@@ -6,7 +6,8 @@ const CaseStudies = () => {
       id: 1,
       name: 'Discovering Me',
       icon: Building2,
-      category: 'Personal Development',
+      logo: null,
+      category: 'Events',
       description:
         'Transforming personal growth initiatives with structured training programs and strategic guidance.',
       color: 'from-blue-500 to-cyan-500',
@@ -15,8 +16,8 @@ const CaseStudies = () => {
     {
       id: 2,
       name: 'Le Atmos Salons',
-      icon: Scissors,
-      category: 'Salon & Beauty',
+      logo: '/atmos.png',
+      category: 'Beauty & Wellness',
       description:
         'Streamlined operations and enhanced customer experience through process optimization and staff training.',
       color: 'from-pink-500 to-rose-500',
@@ -25,7 +26,7 @@ const CaseStudies = () => {
     {
       id: 3,
       name: 'Udgam Group of Schools',
-      icon: GraduationCap,
+      logo: '/udgam.jpg',
       category: 'Education',
       description:
         'Built comprehensive operational frameworks and leadership development programs for sustainable growth.',
@@ -35,7 +36,7 @@ const CaseStudies = () => {
     {
       id: 4,
       name: 'Mahatma Valley Group of Schools',
-      icon: GraduationCap,
+      logo: '/mahatma valley.jpeg',
       category: 'Education',
       description:
         'Designed strategic roadmaps and training initiatives to enhance teaching quality and administrative efficiency.',
@@ -45,7 +46,7 @@ const CaseStudies = () => {
     {
       id: 5,
       name: 'Swarrnim International School',
-      icon: GraduationCap,
+      logo: '/swarnim.jpeg',
       category: 'Education',
       description:
         'Implemented robust processes and team development strategies to drive academic excellence and organizational growth.',
@@ -68,7 +69,6 @@ const CaseStudies = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {caseStudies.map((study, index) => {
-            const Icon = study.icon;
             return (
               <div
                 key={study.id}
@@ -83,9 +83,17 @@ const CaseStudies = () => {
 
                 <div className="relative z-10">
                   <div
-                    className={`w-16 h-16 bg-gradient-to-br ${study.color} rounded-xl flex items-center justify-center mb-6 transform group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 shadow-lg`}
+                    className={`w-16 h-16 ${study.logo ? 'bg-white' : `bg-gradient-to-br ${study.color}`} rounded-xl flex items-center justify-center mb-6 transform group-hover:scale-110 transition-all duration-500 shadow-lg overflow-hidden`}
                   >
-                    <Icon className="w-8 h-8 text-white" />
+                    {study.logo ? (
+                      <img
+                        src={study.logo}
+                        alt={study.name}
+                        className="w-full h-full object-cover"
+                      />
+                    ) : study.icon ? (
+                      <study.icon className="w-8 h-8 text-white" />
+                    ) : null}
                   </div>
 
                   <div className="mb-3">
@@ -105,7 +113,7 @@ const CaseStudies = () => {
                   </p>
 
                   <button className="inline-flex items-center gap-2 text-sm font-semibold bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent group-hover:text-white transition-colors duration-500">
-                  
+
                     {/* <ArrowRight className="w-4 h-4 transform group-hover:translate-x-1 transition-transform duration-300" /> */}
                   </button>
                 </div>

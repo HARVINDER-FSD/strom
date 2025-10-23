@@ -40,11 +40,11 @@ const Footer = () => {
             </p>
             <div className="space-y-3">
               <a
-                href="mailto:hs8339952@gmail.com"
+                href="mailto:storm.organisers@gmail.com"
                 className="flex items-center gap-2 text-slate-400 hover:text-blue-400 transition-colors duration-300"
               >
                 <Mail className="w-4 h-4" />
-                <span className="text-sm">hs8339952@gmail.com</span>
+                <span className="text-sm">storm.organisers@gmail.com</span>
               </a>
               <a
                 href="tel:+919099921767"
