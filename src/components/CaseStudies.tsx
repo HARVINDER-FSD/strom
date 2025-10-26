@@ -209,7 +209,7 @@ const CaseStudies = () => {
                   {study.isExpandable && (
                     <div className="mt-auto">
                       <button className="inline-flex items-center gap-2 text-sm font-semibold text-blue-600 group-hover:text-white transition-colors duration-500">
-                        {study.modalType === 'education' ? 'View all schools' : study.modalType === 'beauty' ? 'View details' : 'Watch testimonials'}
+                        {study.modalType === 'education' ? 'View all schools' : study.modalType === 'beauty' ? 'View details' : 'Watch our stories'}
                         <ArrowRight className="w-4 h-4" />
                       </button>
                     </div>
