@@ -183,36 +183,26 @@ const CaseStudies = () => {
                   className={`absolute inset-0 bg-gradient-to-br ${study.color} opacity-0 group-hover:opacity-100 transition-opacity duration-500`}
                 ></div>
 
-                <div className="relative z-10 flex flex-col items-center">
+                <div className="relative z-10 flex flex-col items-center h-full">
                   <div
-                    className={`w-16 h-16 ${study.logo ? 'bg-white' : `bg-gradient-to-br ${study.color}`} rounded-xl mb-6 transform group-hover:scale-110 transition-all duration-500 shadow-lg relative`}
+                    className={`w-16 h-16 ${study.logo ? 'bg-white' : `bg-gradient-to-br ${study.color}`} rounded-xl mb-4 transform group-hover:scale-110 transition-all duration-500 shadow-lg relative flex items-center justify-center`}
                   >
                     {study.logo ? (
                       <img
                         src={study.logo}
                         alt={study.name}
-                        className="absolute inset-0 m-auto max-w-[75%] max-h-[75%] object-contain"
+                        className="max-w-[75%] max-h-[75%] object-contain"
                       />
                     ) : study.icon ? (
-                      <div className="absolute inset-0 flex items-center justify-center">
-                        <study.icon className="w-8 h-8 text-white" />
-                      </div>
+                      <study.icon className="w-8 h-8 text-white" />
                     ) : null}
                   </div>
 
-                  <div className="mb-3 text-center">
-                    <span
-                      className={`inline-block text-xs font-semibold px-3 py-1 rounded-full ${study.bgColor} bg-gradient-to-r ${study.color} bg-clip-text text-transparent group-hover:text-white transition-colors duration-500`}
-                    >
-                      {study.category}
-                    </span>
-                  </div>
-
-                  <h3 className="text-xl md:text-2xl font-bold text-slate-800 mb-3 md:mb-4 group-hover:text-white transition-colors duration-500 text-center">
+                  <h3 className="text-xl md:text-2xl font-bold text-slate-800 mb-3 group-hover:text-white transition-colors duration-500 text-center">
                     {study.name}
                   </h3>
 
-                  <p className="text-sm md:text-base text-slate-600 mb-4 md:mb-6 leading-relaxed group-hover:text-white/90 transition-colors duration-500 text-center">
+                  <p className="text-sm md:text-base text-slate-600 mb-4 leading-relaxed group-hover:text-white/90 transition-colors duration-500 text-center">
                     {study.description}
                   </p>
 
