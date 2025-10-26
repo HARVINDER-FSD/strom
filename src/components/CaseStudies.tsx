@@ -12,6 +12,7 @@ const CaseStudies = () => {
   const ctaRef = useRef(null);
   const [showEducationModal, setShowEducationModal] = useState(false);
   const [showEventsModal, setShowEventsModal] = useState(false);
+  const [showBeautyModal, setShowBeautyModal] = useState(false);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -113,9 +114,9 @@ const CaseStudies = () => {
       name: 'Events',
       icon: Sparkles,
       logo: null,
-      // category: 'Events',
+      category: 'Events',
       description:
-        'Transforming personal growth initiatives with structured training programs and strategic guidance.',
+        'Creating impactful personal development experiences through engaging workshops, seminars, and transformational events that inspire growth.',
       color: 'from-blue-500 to-cyan-500',
       bgColor: 'bg-blue-50',
       isExpandable: true,
@@ -127,7 +128,7 @@ const CaseStudies = () => {
       name: 'Education',
       icon: GraduationCap,
       logo: null,
-      // category: 'Education',
+      category: 'Education',
       description:
         'Empowering educational institutions with strategic frameworks, operational excellence, and leadership development across multiple schools.',
       color: 'from-teal-500 to-emerald-500',
@@ -135,17 +136,18 @@ const CaseStudies = () => {
       isExpandable: true,
       modalType: 'education',
     },
-        {
+    {
       id: 3,
       name: 'Beauty & Wellness',
       logo: null,
       icon: Heart,
-      // category: 'Beauty & Wellness',
+      category: 'Beauty & Wellness',
       description:
-        'Streamlined operations and enhanced customer experience through process optimization and staff training.',
+        'Elevating salon experiences with premium services, expert staff training, and luxury wellness solutions that delight clients.',
       color: 'from-pink-500 to-rose-500',
       bgColor: 'bg-pink-50',
-      isExpandable: false,
+      isExpandable: true,
+      modalType: 'beauty',
     },
   ];
 
@@ -173,6 +175,8 @@ const CaseStudies = () => {
                       setShowEducationModal(true);
                     } else if (study.modalType === 'events') {
                       setShowEventsModal(true);
+                    } else if (study.modalType === 'beauty') {
+                      setShowBeautyModal(true);
                     }
                   }
                 }}
@@ -218,7 +222,7 @@ const CaseStudies = () => {
                   {study.isExpandable && (
                     <div className="mt-auto">
                       <button className="inline-flex items-center gap-2 text-sm font-semibold text-blue-600 group-hover:text-white transition-colors duration-500">
-                        {study.modalType === 'education' ? 'View all schools' : 'Watch testimonials'}
+                        {study.modalType === 'education' ? 'View all schools' : study.modalType === 'beauty' ? 'View details' : 'Watch testimonials'}
                         <ArrowRight className="w-4 h-4" />
                       </button>
                     </div>
@@ -283,6 +287,69 @@ const CaseStudies = () => {
                       </div>
                     </a>
                   ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Modal for Beauty & Wellness */}
+        {showBeautyModal && (
+          <div
+            className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4 animate-fadeIn"
+            onClick={() => setShowBeautyModal(false)}
+          >
+            <div
+              className="bg-white rounded-2xl max-w-5xl w-full max-h-[90vh] overflow-hidden shadow-2xl transform transition-all animate-scaleIn"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="bg-gradient-to-br from-pink-500 to-rose-500 p-6 md:p-8 relative">
+                <button
+                  onClick={() => setShowBeautyModal(false)}
+                  className="absolute top-4 right-4 bg-white/20 hover:bg-white/30 text-white rounded-full p-2 transition-all duration-300 backdrop-blur-sm"
+                  aria-label="Close"
+                >
+                  <X className="w-5 h-5" />
+                </button>
+                <h2 className="text-2xl md:text-3xl font-bold text-white text-center pr-12">
+                  Le Atmos Salons
+                </h2>
+                <p className="text-white/90 text-center mt-2">
+                  Transforming beauty and wellness experiences
+                </p>
+              </div>
+
+              <div className="p-6 md:p-8 overflow-y-auto max-h-[calc(90vh-180px)]">
+                <div className="bg-gradient-to-br from-pink-50 to-rose-50 border-2 border-pink-100 rounded-xl p-8">
+                  <div className="flex justify-center mb-6">
+                    <div className="w-32 h-32 bg-white rounded-xl flex items-center justify-center shadow-md p-4">
+                      <img
+                        src="/atmos.png"
+                        alt="Le Atmos Salons"
+                        className="w-full h-full object-contain"
+                      />
+                    </div>
+                  </div>
+                  <h3 className="text-2xl font-bold text-slate-800 mb-4 text-center">
+                    Excellence in Beauty & Wellness
+                  </h3>
+                  <p className="text-base text-slate-600 leading-relaxed text-center mb-6">
+                    Le Atmos Salons represents the pinnacle of beauty and wellness transformation. We revolutionized their salon operations by implementing cutting-edge appointment scheduling systems, optimizing service delivery workflows, and establishing comprehensive staff training programs. Our strategic approach enhanced customer satisfaction through personalized service protocols, premium product management, and creating a luxurious ambiance that reflects their brand excellence.
+                  </p>
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
+                    <div className="text-center p-4 bg-white rounded-lg shadow-sm">
+                      <h4 className="font-bold text-pink-600 mb-2">Premium Service Delivery</h4>
+                      <p className="text-sm text-slate-600">Implemented world-class beauty treatments, spa therapies, and wellness services with state-of-the-art equipment and premium products</p>
+                    </div>
+                    <div className="text-center p-4 bg-white rounded-lg shadow-sm">
+                      <h4 className="font-bold text-pink-600 mb-2">Expert Team Development</h4>
+                      <p className="text-sm text-slate-600">Certified beauticians and wellness experts trained in international standards, latest trends, and holistic customer care approaches</p>
+                    </div>
+                    <div className="text-center p-4 bg-white rounded-lg shadow-sm">
+                      <h4 className="font-bold text-pink-600 mb-2">Luxury Experience Design</h4>
+                      <p className="text-sm text-slate-600">Created an upscale ambiance with personalized consultations, membership benefits, and exclusive wellness packages for discerning clients</p>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
