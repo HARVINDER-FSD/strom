@@ -1,4 +1,4 @@
-import { Building2, ArrowRight, GraduationCap, X, Play } from 'lucide-react';
+import { ArrowRight, GraduationCap, X, Play, Sparkles, Heart } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -110,10 +110,10 @@ const CaseStudies = () => {
   const caseStudies = [
     {
       id: 1,
-      name: 'Discovering Me',
-      icon: Building2,
-      logo: '/Untitled-1.png',
-      category: 'Events',
+      name: 'Events',
+      icon: Sparkles,
+      logo: null,
+      // category: 'Events',
       description:
         'Transforming personal growth initiatives with structured training programs and strategic guidance.',
       color: 'from-blue-500 to-cyan-500',
@@ -123,9 +123,10 @@ const CaseStudies = () => {
     },
     {
       id: 2,
-      name: 'Le Atmos Salons',
-      logo: '/atmos.png',
-      category: 'Beauty & Wellness',
+      name: 'Beauty & Wellness',
+      logo: null,
+      icon: Heart,
+      // category: 'Beauty & Wellness',
       description:
         'Streamlined operations and enhanced customer experience through process optimization and staff training.',
       color: 'from-pink-500 to-rose-500',
@@ -137,7 +138,7 @@ const CaseStudies = () => {
       name: 'Education',
       icon: GraduationCap,
       logo: null,
-      category: 'Education',
+      // category: 'Education',
       description:
         'Empowering educational institutions with strategic frameworks, operational excellence, and leadership development across multiple schools.',
       color: 'from-teal-500 to-emerald-500',
