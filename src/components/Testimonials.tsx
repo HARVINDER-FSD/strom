@@ -66,7 +66,7 @@ const Testimonials = () => {
 
         <div className="mb-12 md:mb-16 text-center">
           <p className="text-base md:text-lg text-slate-600 mb-6 max-w-2xl mx-auto px-4">
-            Watch our client testimonials and success stories on our YouTube channel
+            Watch our success stories on our YouTube channel
           </p>
           <a
             href="https://www.youtube.com/@stormorganisers7949"
