@@ -141,14 +141,14 @@ const Footer = () => {
             <p className="text-slate-400 text-sm">
               © {currentYear} All rights reserved. Organising the Un-Organised.
             </p>
-            <div className="flex gap-6">
+            {/* <div className="flex gap-6">
               <button className="text-slate-400 hover:text-blue-400 text-sm transition-colors duration-300">
                 Privacy Policy
               </button>
               <button className="text-slate-400 hover:text-blue-400 text-sm transition-colors duration-300">
                 Terms of Service
               </button>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
