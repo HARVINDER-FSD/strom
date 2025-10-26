@@ -121,20 +121,9 @@ const CaseStudies = () => {
       isExpandable: true,
       modalType: 'events',
     },
+
     {
       id: 2,
-      name: 'Beauty & Wellness',
-      logo: null,
-      icon: Heart,
-      // category: 'Beauty & Wellness',
-      description:
-        'Streamlined operations and enhanced customer experience through process optimization and staff training.',
-      color: 'from-pink-500 to-rose-500',
-      bgColor: 'bg-pink-50',
-      isExpandable: false,
-    },
-    {
-      id: 3,
       name: 'Education',
       icon: GraduationCap,
       logo: null,
@@ -145,6 +134,18 @@ const CaseStudies = () => {
       bgColor: 'bg-teal-50',
       isExpandable: true,
       modalType: 'education',
+    },
+        {
+      id: 3,
+      name: 'Beauty & Wellness',
+      logo: null,
+      icon: Heart,
+      // category: 'Beauty & Wellness',
+      description:
+        'Streamlined operations and enhanced customer experience through process optimization and staff training.',
+      color: 'from-pink-500 to-rose-500',
+      bgColor: 'bg-pink-50',
+      isExpandable: false,
     },
   ];
 
