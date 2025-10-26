@@ -1,5 +1,5 @@
-import { Building2, ArrowRight } from 'lucide-react';
-import { useEffect, useRef } from 'react';
+import { Building2, ArrowRight, GraduationCap, X, Play } from 'lucide-react';
+import { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -10,6 +10,8 @@ const CaseStudies = () => {
   const titleRef = useRef(null);
   const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
   const ctaRef = useRef(null);
+  const [showEducationModal, setShowEducationModal] = useState(false);
+  const [showEventsModal, setShowEventsModal] = useState(false);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -59,17 +61,65 @@ const CaseStudies = () => {
 
     return () => ctx.revert();
   }, []);
+
+  const eventVideos = [
+    {
+      id: 1,
+      videoId: 'wBRB6tLmZuQ',
+      url: 'https://youtu.be/wBRB6tLmZuQ?si=P0ELtLbp2dneAfRh',
+      thumbnail: 'https://img.youtube.com/vi/wBRB6tLmZuQ/maxresdefault.jpg',
+      title: 'The Success',
+    },
+    {
+      id: 2,
+      videoId: 'vkPfZFaT-RY',
+      url: 'https://youtu.be/vkPfZFaT-RY?si=pDkIZcKw5sF4kTrY',
+      thumbnail: 'https://img.youtube.com/vi/vkPfZFaT-RY/maxresdefault.jpg',
+      title: 'The Journey',
+    },
+    {
+      id: 3,
+      videoId: 'p-xLo7A6y1k',
+      url: 'https://youtu.be/p-xLo7A6y1k?si=pox6Trk8DMnFfj_J',
+      thumbnail: 'https://img.youtube.com/vi/p-xLo7A6y1k/maxresdefault.jpg',
+      title: 'The Growth',
+    },
+  ];
+
+  const educationSchools = [
+    {
+      name: 'Udgam Group of Schools',
+      logo: '/udgam.jpg',
+      description:
+        'Built comprehensive operational frameworks and leadership development programs for sustainable growth.',
+    },
+    {
+      name: 'Mahatma Valley Group of Schools',
+      logo: '/mahatma valley.jpeg',
+      description:
+        'Designed strategic roadmaps and training initiatives to enhance teaching quality and administrative efficiency.',
+    },
+    {
+      name: 'Swarrnim International School',
+      logo: '/swarnim.jpeg',
+      description:
+        'Implemented robust processes and team development strategies to drive academic excellence and organizational growth.',
+    },
+  ];
+
   const caseStudies = [
     {
       id: 1,
       name: 'Discovering Me',
       icon: Building2,
-      logo: "/Untitled-1.png",
+      logo: '/Untitled-1.png',
       category: 'Events',
       description:
         'Transforming personal growth initiatives with structured training programs and strategic guidance.',
       color: 'from-blue-500 to-cyan-500',
       bgColor: 'bg-blue-50',
+      isExpandable: true,
+      modalType: 'events',
     },
     {
       id: 2,
@@ -80,36 +130,20 @@ const CaseStudies = () => {
         'Streamlined operations and enhanced customer experience through process optimization and staff training.',
       color: 'from-pink-500 to-rose-500',
       bgColor: 'bg-pink-50',
+      isExpandable: false,
     },
     {
       id: 3,
-      name: 'Udgam Group of Schools',
-      logo: '/udgam.jpg',
+      name: 'Education',
+      icon: GraduationCap,
+      logo: null,
       category: 'Education',
       description:
-        'Built comprehensive operational frameworks and leadership development programs for sustainable growth.',
+        'Empowering educational institutions with strategic frameworks, operational excellence, and leadership development across multiple schools.',
       color: 'from-teal-500 to-emerald-500',
       bgColor: 'bg-teal-50',
-    },
-    {
-      id: 4,
-      name: 'Mahatma Valley Group of Schools',
-      logo: '/mahatma valley.jpeg',
-      category: 'Education',
-      description:
-        'Designed strategic roadmaps and training initiatives to enhance teaching quality and administrative efficiency.',
-      color: 'from-orange-500 to-amber-500',
-      bgColor: 'bg-orange-50',
-    },
-    {
-      id: 5,
-      name: 'Swarrnim International School',
-      logo: '/swarnim.jpeg',
-      category: 'Education',
-      description:
-        'Implemented robust processes and team development strategies to drive academic excellence and organizational growth.',
-      color: 'from-violet-500 to-purple-500',
-      bgColor: 'bg-violet-50',
+      isExpandable: true,
+      modalType: 'education',
     },
   ];
 
@@ -131,10 +165,16 @@ const CaseStudies = () => {
               <div
                 key={study.id}
                 ref={(el) => (cardsRef.current[index] = el)}
-                className="group bg-white border-2 border-slate-100 rounded-xl md:rounded-2xl p-6 md:p-8 hover:border-transparent hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 cursor-pointer relative overflow-hidden"
-                style={{
-                  animationDelay: `${index * 100}ms`,
+                onClick={() => {
+                  if (study.isExpandable) {
+                    if (study.modalType === 'education') {
+                      setShowEducationModal(true);
+                    } else if (study.modalType === 'events') {
+                      setShowEventsModal(true);
+                    }
+                  }
                 }}
+                className="group bg-white border-2 border-slate-100 rounded-xl md:rounded-2xl p-6 md:p-8 hover:border-transparent hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 cursor-pointer relative overflow-hidden"
               >
                 <div
                   className={`absolute inset-0 bg-gradient-to-br ${study.color} opacity-0 group-hover:opacity-100 transition-opacity duration-500`}
@@ -173,15 +213,135 @@ const CaseStudies = () => {
                     {study.description}
                   </p>
 
-                  <button className="inline-flex items-center gap-2 text-sm font-semibold bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent group-hover:text-white transition-colors duration-500">
-
-                    {/* <ArrowRight className="w-4 h-4 transform group-hover:translate-x-1 transition-transform duration-300" /> */}
-                  </button>
+                  {study.isExpandable && (
+                    <div className="mt-auto">
+                      <button className="inline-flex items-center gap-2 text-sm font-semibold text-blue-600 group-hover:text-white transition-colors duration-500">
+                        {study.modalType === 'education' ? 'View all schools' : 'Watch testimonials'}
+                        <ArrowRight className="w-4 h-4" />
+                      </button>
+                    </div>
+                  )}
                 </div>
               </div>
             );
           })}
         </div>
+
+        {/* Modal for Events Videos */}
+        {showEventsModal && (
+          <div
+            className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4 animate-fadeIn"
+            onClick={() => setShowEventsModal(false)}
+          >
+            <div
+              className="bg-white rounded-2xl max-w-5xl w-full max-h-[90vh] overflow-hidden shadow-2xl transform transition-all animate-scaleIn"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="bg-gradient-to-br from-blue-500 to-cyan-500 p-6 md:p-8 relative">
+                <button
+                  onClick={() => setShowEventsModal(false)}
+                  className="absolute top-4 right-4 bg-white/20 hover:bg-white/30 text-white rounded-full p-2 transition-all duration-300 backdrop-blur-sm"
+                  aria-label="Close"
+                >
+                  <X className="w-5 h-5" />
+                </button>
+                <h2 className="text-2xl md:text-3xl font-bold text-white text-center pr-12">
+                  Discovering me
+                </h2>
+                <p className="text-white/90 text-center mt-2">
+                  Hear from our events about the transformation journey
+                </p>
+              </div>
+
+              <div className="p-6 md:p-8 overflow-y-auto max-h-[calc(90vh-180px)]">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {eventVideos.map((video) => (
+                    <a
+                      key={video.id}
+                      href={video.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group relative bg-slate-200 rounded-xl overflow-hidden aspect-video cursor-pointer transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-2xl"
+                    >
+                      <img
+                        src={video.thumbnail}
+                        alt={video.title}
+                        className="absolute inset-0 w-full h-full object-cover"
+                        onError={(e) => {
+                          e.currentTarget.src = `https://img.youtube.com/vi/${video.videoId}/hqdefault.jpg`;
+                        }}
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-br from-blue-600/60 to-cyan-600/60 group-hover:from-blue-600/80 group-hover:to-cyan-600/80 transition-all duration-300 flex items-center justify-center">
+                        <div className="text-center text-white">
+                          <div className="w-16 h-16 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center mx-auto mb-3 group-hover:bg-white/30 group-hover:scale-110 transition-all duration-300">
+                            <Play className="w-8 h-8 ml-1" />
+                          </div>
+                          <h4 className="font-bold text-base px-4">{video.title}</h4>
+                        </div>
+                      </div>
+                    </a>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Modal for Education Schools */}
+        {showEducationModal && (
+          <div
+            className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4 animate-fadeIn"
+            onClick={() => setShowEducationModal(false)}
+          >
+            <div
+              className="bg-white rounded-2xl max-w-5xl w-full max-h-[90vh] overflow-hidden shadow-2xl transform transition-all animate-scaleIn"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="bg-gradient-to-br from-teal-500 to-emerald-500 p-6 md:p-8 relative">
+                <button
+                  onClick={() => setShowEducationModal(false)}
+                  className="absolute top-4 right-4 bg-white/20 hover:bg-white/30 text-white rounded-full p-2 transition-all duration-300 backdrop-blur-sm"
+                  aria-label="Close"
+                >
+                  <X className="w-5 h-5" />
+                </button>
+                <h2 className="text-2xl md:text-3xl font-bold text-white text-center pr-12">
+                  Our Education Partners
+                </h2>
+                <p className="text-white/90 text-center mt-2">
+                  Transforming educational institutions across India
+                </p>
+              </div>
+
+              <div className="p-6 md:p-8 overflow-y-auto max-h-[calc(90vh-180px)]">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {educationSchools.map((school, idx) => (
+                    <div
+                      key={idx}
+                      className="bg-gradient-to-br from-teal-50 to-emerald-50 border-2 border-teal-100 rounded-xl p-6 hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1"
+                    >
+                      <div className="flex justify-center mb-4">
+                        <div className="w-20 h-20 bg-white rounded-xl flex items-center justify-center shadow-md p-2">
+                          <img
+                            src={school.logo}
+                            alt={school.name}
+                            className="w-full h-full object-contain"
+                          />
+                        </div>
+                      </div>
+                      <h3 className="text-lg font-bold text-slate-800 mb-3 text-center">
+                        {school.name}
+                      </h3>
+                      <p className="text-sm text-slate-600 leading-relaxed text-center">
+                        {school.description}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
 
         <div ref={ctaRef} className="mt-12 md:mt-16 bg-gradient-to-br from-blue-600 to-cyan-600 rounded-2xl md:rounded-3xl p-6 md:p-12 text-center text-white relative overflow-hidden">
           <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0zNiAxOGMzLjMxNCAwIDYgMi42ODYgNiA2cy0yLjY4NiA2LTYgNi02LTIuNjg2LTYtNiAyLjY4Ni02IDYtNiIgc3Ryb2tlPSJyZ2JhKDI1NSwgMjU1LCAyNTUsIDAuMikiLz48L2c+PC9zdmc+')] opacity-20"></div>
