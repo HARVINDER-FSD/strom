@@ -114,7 +114,6 @@ const CaseStudies = () => {
       name: 'Events',
       icon: Sparkles,
       logo: null,
-      category: 'Events',
       description:
         'Creating impactful personal development experiences through engaging workshops, seminars, and transformational events that inspire growth.',
       color: 'from-blue-500 to-cyan-500',
@@ -128,7 +127,6 @@ const CaseStudies = () => {
       name: 'Education',
       icon: GraduationCap,
       logo: null,
-      category: 'Education',
       description:
         'Empowering educational institutions with strategic frameworks, operational excellence, and leadership development across multiple schools.',
       color: 'from-teal-500 to-emerald-500',
@@ -141,7 +139,6 @@ const CaseStudies = () => {
       name: 'Beauty & Wellness',
       logo: null,
       icon: Heart,
-      category: 'Beauty & Wellness',
       description:
         'Elevating salon experiences with premium services, expert staff training, and luxury wellness solutions that delight clients.',
       color: 'from-pink-500 to-rose-500',
