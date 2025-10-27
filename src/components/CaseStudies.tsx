@@ -113,7 +113,7 @@ const CaseStudies = () => {
       id: 1,
       name: 'Events',
       icon: Sparkles,
-      logo: null,
+      logo: "/dis.png",
       description:
         'Creating impactful personal development experiences through engaging workshops, seminars, and transformational events that inspire growth.',
       color: 'from-blue-500 to-cyan-500',
@@ -185,13 +185,13 @@ const CaseStudies = () => {
 
                 <div className="relative z-10 flex flex-col items-center h-full">
                   <div
-                    className={`w-16 h-16 ${study.logo ? 'bg-white' : `bg-gradient-to-br ${study.color}`} rounded-xl mb-4 transform group-hover:scale-110 transition-all duration-500 shadow-lg relative flex items-center justify-center`}
+                    className={`w-20 h-20 ${study.logo ? 'bg-white' : `bg-gradient-to-br ${study.color}`} rounded-xl mb-4 transform group-hover:scale-110 transition-all duration-500 shadow-lg relative flex items-center justify-center`}
                   >
                     {study.logo ? (
                       <img
                         src={study.logo}
                         alt={study.name}
-                        className="max-w-[75%] max-h-[75%] object-contain"
+                        className="max-w-[85%] max-h-[85%] object-contain"
                       />
                     ) : study.icon ? (
                       <study.icon className="w-8 h-8 text-white" />
